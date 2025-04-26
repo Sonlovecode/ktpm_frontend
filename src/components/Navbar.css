@@ -1,0 +1,134 @@
+/* Navbar Styles */
+.navbar {
+  padding: 0.75rem 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand img {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+  transform: scale(1.05);
+}
+
+/* Search Bar */
+.search-bar {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 1.5rem;
+}
+
+.search-bar .input-group {
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+}
+
+.search-bar input:focus {
+  box-shadow: none;
+}
+
+.search-bar .btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 50px 50px 0;
+}
+
+/* User Menu */
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Categories Menu */
+.categories-menu {
+  background-color: #f8f9fa;
+  border-top: 1px solid #eee;
+  padding: 0.5rem 0;
+  display: none;
+}
+
+.categories-menu.show {
+  display: block;
+}
+
+.categories-menu .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.categories-menu .nav::-webkit-scrollbar {
+  display: none;
+}
+
+.categories-menu .nav-link {
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.categories-menu .nav-link:hover {
+  color: #4a90e2;
+}
+
+.categories-menu .nav-link i {
+  font-size: 1.1rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 991.98px) {
+  .search-bar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+  }
+
+  .search-bar.active {
+    display: block;
+  }
+
+  .categories-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+} 

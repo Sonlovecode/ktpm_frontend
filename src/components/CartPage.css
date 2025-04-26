@@ -1,0 +1,133 @@
+/* Các sản phẩm trong giỏ hàng */
+.cart-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cart-item-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #f0f0f0;
+}
+
+.cart-item .flex-grow-1 {
+    margin-left: 15px;
+}
+
+.cart-item h5 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.cart-item .text-danger {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Các nút điều chỉnh số lượng */
+.d-flex {
+    align-items: center;
+}
+
+button.btn {
+    font-size: 1rem;
+    border-radius: 50%;
+    padding: 5px 10px;
+    background-color: #04396e;
+    border: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+
+button.btn:hover {
+    background-color: #f1f1f1;
+}
+
+/* Nút xóa sản phẩm */
+button.btn-outline-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+button.btn-outline-danger:hover {
+    background-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Cột tổng giỏ hàng và các nút dưới cùng */
+.d-flex.justify-content-between {
+    margin-top: 30px;
+}
+
+button.btn-danger {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+button.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+/* Thông báo khi giỏ hàng trống */
+.alert-info {
+    background-color: #d9edf7;
+    color: #31708f;
+    border: 1px solid #bce8f1;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+/* Thiết kế responsive cho các màn hình nhỏ */
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+    }
+
+    .cart-item .flex-grow-1 {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .cart-item-img {
+        margin-bottom: 10px;
+    }
+
+    .d-flex.justify-content-between {
+        flex-direction: column;
+        align-items: center;
+    }
+}

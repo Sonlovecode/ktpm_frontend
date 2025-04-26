@@ -1,0 +1,43 @@
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #0c2233;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 15px;
+  }
+  
+  .sidebar ul li a {
+    color: #ccc;
+    text-decoration: none;
+  }
+  
+  .sidebar ul li.active a,
+  .sidebar ul li a:hover {
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .content {
+    flex-grow: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  

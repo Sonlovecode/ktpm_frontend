@@ -1,0 +1,40 @@
+/* OrderPage.css
+.order-summary {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-details {
+    margin-top: 20px;
+}
+
+.order-details h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.order-details h6 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.total-amount h6 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #d9534f;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+button {
+    width: 48%;
+} */

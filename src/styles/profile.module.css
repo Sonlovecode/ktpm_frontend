@@ -1,0 +1,56 @@
+.profile{
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    height: 100%;
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.inProfileUser{
+    display: flex;
+    margin-top: 170px;
+    margin-bottom: 120px;
+    gap: 20px;
+}
+.leftProfileUser{
+    text-align: center;
+background-color: white;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+    width: 350px;
+}
+.leftProfileUser img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.leftProfileUser h4{
+    margin-top: 10px;
+}
+.leftProfileUser div{
+    /* margin-top: 10px; */
+    margin-bottom: 5px;
+}
+.rightProfileUser{
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.inRightProfileUser{
+    display: flex;
+    gap: 15px;
+    /* margin-bottom: 5px; */
+}
