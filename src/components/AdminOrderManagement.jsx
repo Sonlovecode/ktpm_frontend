@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import '../styles/AdminOrderManagement.css';
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || 'https://ktpm-backend.onrender.com';
 
 const AdminOrderManagement = () => {
   const [orders, setOrders] = useState([]);

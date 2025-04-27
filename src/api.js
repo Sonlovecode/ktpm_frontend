@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Dùng biến môi trường
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || 'https://ktpm-backend.onrender.com';
 
 
 const api = axios.create({

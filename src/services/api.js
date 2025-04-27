@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Lấy API URL từ biến môi trường, fallback về localhost nếu chưa có
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || 'https://ktpm-backend.onrender.com';
 
 const api = axios.create({
   baseURL: API_URL,
@@ -28,15 +28,22 @@ api.interceptors.response.use(
       if (error.response.status === 401) {
         localStorage.removeItem('token');
         if (!window.location.href.includes('/login')) {
+          // Dùng window.location.href nếu không sử dụng React Router
           window.location.href = '/login';
         }
       }
       // Nếu server lỗi (Render die, network down, etc.)
-      if (error.response.status >= 500) {
+      else if (error.response.status >= 500) {
         alert('Server đang bảo trì. Vui lòng thử lại sau!');
       }
+      // Các lỗi khác (404, 403,...)
+      else if (error.response.status === 404) {
+        alert('Không tìm thấy dữ liệu yêu cầu.');
+      } else if (error.response.status === 403) {
+        alert('Bạn không có quyền truy cập vào dữ liệu này.');
+      }
     } else {
-      // Lỗi không có response (VD: không kết nối được server)
+      
       alert('Không thể kết nối đến máy chủ. Vui lòng kiểm tra mạng hoặc thử lại sau!');
     }
     return Promise.reject(error);
@@ -66,6 +73,6 @@ export const authAPI = {
   checkAuth: () => api.get('/api/v1/auth/check'),
 };
 
-// (Nếu sau này dùng userAPI hoặc adminAPI thì bật lại cũng chuẩn luôn)
+
 
 export default api;
