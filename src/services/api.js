@@ -23,6 +23,7 @@ api.interceptors.request.use((config) => {
 // Product APIs
 export const productAPI = {
   getAll: () => api.get('/api/v2/products'),
+  
   getById: (id) => api.get(`/api/v2/products/${id}`),
   search: (query) => api.get(`/api/v2/products/search?q=${query}`),
   create: (productData) => api.post('/api/v2/products', productData),
