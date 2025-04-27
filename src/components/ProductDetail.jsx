@@ -19,7 +19,7 @@ const ProductDetail = () => {
         if (!id) return;
         setLoading(true);
 
-        axios.get(`/api/v2/products/${id}`)
+        axios.get(`${API_URL}/api/v2/products/${id}`)
             .then(response => {
                 console.log("Dữ liệu sản phẩm:", response.data);
                 setProduct(response.data);
