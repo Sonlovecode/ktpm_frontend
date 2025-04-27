@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000';
+// Cập nhật URL API backend trên Render
+const API_URL = 'https://ktpm-backend.onrender.com';  // Thay đổi thành URL backend trên Render
 
 const authService = {
     // Đăng ký
@@ -55,8 +56,6 @@ const authService = {
     
     // Kiểm tra có phải là admin không - ĐÃ CHỈNH SỬA: luôn trả về true
     isAdmin: () => {
-        // const user = authService.getCurrentUser();
-        // return user?.role === 'admin';
         return true; // Tạm thời cho phép tất cả tài khoản đều có quyền admin
     },
     

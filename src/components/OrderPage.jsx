@@ -1,5 +1,4 @@
-// src/pages/OrderPage.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/auth';
 
@@ -8,12 +7,14 @@ const OrderPage = () => {
     const navigate = useNavigate();
     const { cartItems = [] } = location.state || {};  // Lấy giỏ hàng từ state hoặc mặc định []
     const [auth] = useAuth();
+    const [showLoginAlert, setShowLoginAlert] = useState(false);  // Quản lý việc hiển thị thông báo yêu cầu đăng nhập
 
-    // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
-    if (!auth?.user) {
-        navigate("/login");
-        return null;  // Nếu không đăng nhập, không hiển thị trang
-    }
+    useEffect(() => {
+        // Chỉ hiển thị thông báo yêu cầu đăng nhập khi người dùng chưa đăng nhập
+        if (!auth?.user) {
+            setShowLoginAlert(true);
+        }
+    }, [auth]); // Chạy effect này khi auth thay đổi
 
     // Định dạng giá tiền
     const formatPrice = (price) =>
@@ -33,6 +34,11 @@ const OrderPage = () => {
 
     // Xử lý xác nhận đơn hàng
     const handleConfirmOrder = () => {
+        if (!auth?.user) {
+            setShowLoginAlert(true);  // Hiển thị thông báo nếu chưa đăng nhập
+            return;
+        }
+
         const newOrder = {
             id: Date.now(),
             user: auth.user,
@@ -56,6 +62,14 @@ const OrderPage = () => {
     return (
         <div className="container my-5">
             <h2 className="mb-4">📦 Thông tin đơn hàng</h2>
+
+            {/* Thông báo yêu cầu đăng nhập */}
+            {showLoginAlert && (
+                <div className="alert alert-danger mb-4">
+                    Bạn cần <strong>đăng nhập</strong> để đặt hàng. 
+                    <button className="btn btn-primary ms-2" onClick={() => navigate("/login")}>Đăng nhập ngay</button>
+                </div>
+            )}
 
             {/* Thông tin khách hàng */}
             <div className="mb-4 p-3 border rounded bg-light">
