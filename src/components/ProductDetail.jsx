@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || 'https://ktpm-backend.onrender.com';
 
 import axios from 'axios';
 
@@ -19,7 +19,7 @@ const ProductDetail = () => {
         if (!id) return;
         setLoading(true);
 
-        axios.get(`http://localhost:3000/api/v2/products/${id}`)
+        axios.get(`/api/v2/products/${id}`)
             .then(response => {
                 console.log("Dữ liệu sản phẩm:", response.data);
                 setProduct(response.data);
