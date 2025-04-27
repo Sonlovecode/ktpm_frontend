@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { LuPenLine } from "react-icons/lu";
 import { useAuth } from "../context/auth";
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 const Profile = () => {
     const [auth] = useAuth();

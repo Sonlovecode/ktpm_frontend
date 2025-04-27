@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 import axios from 'axios';
 

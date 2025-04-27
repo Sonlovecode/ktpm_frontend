@@ -4,7 +4,8 @@ import { MdDeleteOutline } from "react-icons/md";
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 
 const AdminUserManagement = () => {
     const [users, setUsers] = useState([]);

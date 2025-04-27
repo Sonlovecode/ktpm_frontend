@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import '../styles/AdminOrderManagement.css';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 const AdminOrderManagement = () => {
   const [orders, setOrders] = useState([]);
@@ -22,56 +23,56 @@ const AdminOrderManagement = () => {
         // If no orders found in localStorage, use sample data as fallback
         if (storedOrders.length === 0) {
           // Sample data for testing when localStorage is empty
-          const sampleOrders = [
-            {
-              id: 37,
-              user: {
-                name: 'Ngô Sỹ Nguyên',
-                phone: '0973999949',
-                email: 'minacode68@gmail.com',
-                address: 'Xã Nghĩa Thành, Huyện Nghĩa Đàn, Tỉnh Nghệ An'
-              },
-              shippingInfo: {
-                name: 'Ngô Sỹ Nguyên',
-                phone: '0973999949',
-                email: 'minacode68@gmail.com',
-                address: 'Xã Nghĩa Thành, Huyện Nghĩa Đàn, Tỉnh Nghệ An'
-              },
-              note: 'Giao nhanh',
-              createdAt: '2023-12-21T07:59:27',
-              status: 'Đã xác nhận',
-              total: 1250000,
-              paymentMethod: 'COD',
-              items: [
-                { id: 1, name: 'Sản phẩm A', price: 450000, quantity: 1, image: '/img/product-placeholder.jpg' },
-                { id: 2, name: 'Sản phẩm B', price: 800000, quantity: 1, image: '/img/product-placeholder.jpg' }
-              ]
-            },
-            {
-              id: 38,
-              user: {
-                name: 'Lê Văn Hoàng',
-                phone: '0912345678',
-                email: 'hoang@example.com',
-                address: 'Phường Bến Nghé, Quận 1, TP HCM'
-              },
-              shippingInfo: {
-                name: 'Lê Văn Hoàng',
-                phone: '0912345678',
-                email: 'hoang@example.com',
-                address: 'Phường Bến Nghé, Quận 1, TP HCM'
-              },
-              note: 'Gọi trước khi giao',
-              createdAt: '2023-12-22T14:30:00',
-              status: 'Chờ xác nhận',
-              total: 2100000,
-              paymentMethod: 'Banking',
-              items: [
-                { id: 3, name: 'Sản phẩm C', price: 700000, quantity: 3, image: '/img/product-placeholder.jpg' }
-              ]
-            }
-          ];
-          setOrders(sampleOrders);
+          // const sampleOrders = [
+          //   {
+          //     id: 37,
+          //     user: {
+          //       name: 'Ngô Sỹ Nguyên',
+          //       phone: '0973999949',
+          //       email: 'minacode68@gmail.com',
+          //       address: 'Xã Nghĩa Thành, Huyện Nghĩa Đàn, Tỉnh Nghệ An'
+          //     },
+          //     shippingInfo: {
+          //       name: 'Ngô Sỹ Nguyên',
+          //       phone: '0973999949',
+          //       email: 'minacode68@gmail.com',
+          //       address: 'Xã Nghĩa Thành, Huyện Nghĩa Đàn, Tỉnh Nghệ An'
+          //     },
+          //     note: 'Giao nhanh',
+          //     createdAt: '2023-12-21T07:59:27',
+          //     status: 'Đã xác nhận',
+          //     total: 1250000,
+          //     paymentMethod: 'COD',
+          //     items: [
+          //       { id: 1, name: 'Sản phẩm A', price: 450000, quantity: 1, image: '/img/product-placeholder.jpg' },
+          //       { id: 2, name: 'Sản phẩm B', price: 800000, quantity: 1, image: '/img/product-placeholder.jpg' }
+          //     ]
+          //   },
+          //   {
+          //     id: 38,
+          //     user: {
+          //       name: 'Lê Văn Hoàng',
+          //       phone: '0912345678',
+          //       email: 'hoang@example.com',
+          //       address: 'Phường Bến Nghé, Quận 1, TP HCM'
+          //     },
+          //     shippingInfo: {
+          //       name: 'Lê Văn Hoàng',
+          //       phone: '0912345678',
+          //       email: 'hoang@example.com',
+          //       address: 'Phường Bến Nghé, Quận 1, TP HCM'
+          //     },
+          //     note: 'Gọi trước khi giao',
+          //     createdAt: '2023-12-22T14:30:00',
+          //     status: 'Chờ xác nhận',
+          //     total: 2100000,
+          //     paymentMethod: 'Banking',
+          //     items: [
+          //       { id: 3, name: 'Sản phẩm C', price: 700000, quantity: 3, image: '/img/product-placeholder.jpg' }
+          //     ]
+          //   }
+          // ];
+          // setOrders(sampleOrders);
         } else {
           setOrders(storedOrders);
         }

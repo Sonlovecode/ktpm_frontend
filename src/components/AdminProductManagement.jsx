@@ -3,6 +3,9 @@ import { productAPI } from "../services/api";
 
 import '../styles/AdminProductManagement.css';
 
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 const AdminProductManagement = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);

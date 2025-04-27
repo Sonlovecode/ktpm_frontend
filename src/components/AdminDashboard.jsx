@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/auth';
 import { adminAPI,  } from '../api'; // Import các API cần thiết
-const API_URL = 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 
 import '../styles/AdminDashboard.css';
 import axios from 'axios';
