@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// Dùng biến môi trường
+// Lấy API URL từ biến môi trường, fallback về localhost nếu chưa có
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
 
 const api = axios.create({
   baseURL: API_URL,
@@ -11,7 +10,7 @@ const api = axios.create({
   },
 });
 
-// Add token to requests if it exists
+// Gắn token tự động vào request (nếu có)
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -20,10 +19,33 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Xử lý lỗi trả về (nhất là lỗi 401 hoặc lỗi server)
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response) {
+      // Nếu token hết hạn hoặc không hợp lệ
+      if (error.response.status === 401) {
+        localStorage.removeItem('token');
+        if (!window.location.href.includes('/login')) {
+          window.location.href = '/login';
+        }
+      }
+      // Nếu server lỗi (Render die, network down, etc.)
+      if (error.response.status >= 500) {
+        alert('Server đang bảo trì. Vui lòng thử lại sau!');
+      }
+    } else {
+      // Lỗi không có response (VD: không kết nối được server)
+      alert('Không thể kết nối đến máy chủ. Vui lòng kiểm tra mạng hoặc thử lại sau!');
+    }
+    return Promise.reject(error);
+  }
+);
+
 // Product APIs
 export const productAPI = {
   getAll: () => api.get('/api/v2/products'),
-  
   getById: (id) => api.get(`/api/v2/products/${id}`),
   search: (query) => api.get(`/api/v2/products/search?q=${query}`),
   create: (productData) => api.post('/api/v2/products', productData),
@@ -44,34 +66,6 @@ export const authAPI = {
   checkAuth: () => api.get('/api/v1/auth/check'),
 };
 
-// // User APIs
-// export const userAPI = {
-//   getProfile: () => api.get('/api/v1/users/profile'),
-//   updateProfile: (data) => api.put('/api/v1/users/profile', data),
-//   changePassword: (data) => api.put('/api/v1/users/change-password', data),
-// };
-
-// // Admin APIs
-// export const adminAPI = {
-//   getDashboardStats: () => api.get('/api/v1/admin/stats'),
-//   getAllUsers: () => api.get('/api/v1/admin/users'),
-//   updateUserRole: (userId, role) => api.put(`/api/v1/admin/users/${userId}/role`, { role }),
-// };
-
-// Error handler
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    // Handle expired tokens
-    if (error.response && error.response.status === 401) {
-      localStorage.removeItem('token');
-      // Only redirect if not already on login page
-      if (!window.location.href.includes('/login')) {
-        window.location.href = '/login';
-      }
-    }
-    return Promise.reject(error);
-  }
-);
+// (Nếu sau này dùng userAPI hoặc adminAPI thì bật lại cũng chuẩn luôn)
 
 export default api;
